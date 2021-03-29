@@ -28,9 +28,6 @@ public abstract class ShulkerEntityMixin extends GolemEntity implements Monster 
     @Shadow
     protected abstract boolean tryTeleport();
 
-    @Shadow @Nullable
-    public abstract DyeColor getColor();
-
     @Shadow @Final
     protected static TrackedData<Byte> COLOR;
 
@@ -65,7 +62,8 @@ public abstract class ShulkerEntityMixin extends GolemEntity implements Monster 
             float f = (float)(i - 1) / 5.0F;
             if (this.world.random.nextFloat() >= f) {
                 ShulkerEntity shulkerEntity = EntityType.SHULKER.create(this.world);
-                DyeColor dyeColor = this.getColor();
+                byte dyeColorByte = shulkerEntity.getDataTracker().get(COLOR);
+                DyeColor dyeColor = dyeColorByte <= 15 ? DyeColor.byId(dyeColorByte) : null;
                 if (dyeColor != null) {
                     shulkerEntity.getDataTracker().set(COLOR, (byte)dyeColor.getId());
                 }
