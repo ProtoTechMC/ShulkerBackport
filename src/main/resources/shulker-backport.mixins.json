@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "codes.cheater.shulker_backport.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ShulkerEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
